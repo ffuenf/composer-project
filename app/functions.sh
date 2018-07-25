@@ -83,20 +83,20 @@ function createEnvFile(){
     echo -e "Database settings"
     echo -e "--------------------------\n"
 
-    read -p "Enter your database host (default: 127.0.0.1): " DB_HOST
-    DB_HOST=${DB_HOST:-"127.0.0.1"}
+    read -p "Enter your database host (default: 127.0.0.1): " MYSQL_HOST
+    MYSQL_HOST=${MYSQL_HOST:-"127.0.0.1"}
 
-    read -p "Enter your database name (default: swcomposer): " DB_DATABASE
-    DB_DATABASE=${DB_DATABASE:-swcomposer}
+    read -p "Enter your database name (default: swcomposer): " MYSQL_DATABASE
+    MYSQL_DATABASE=${MYSQL_DATABASE:-swcomposer}
 
-    read -p "Enter your database username (default: shopware): " DB_USERNAME
-    DB_USERNAME=${DB_USERNAME:-shopware}
+    read -p "Enter your database username (default: shopware): " MYSQL_USER
+    MYSQL_USER=${MYSQL_USER:-shopware}
 
-    read -p "Enter your database password (default: shopware): " DB_PASSWORD
-    DB_PASSWORD=${DB_PASSWORD//\"/\\\":-shopware}
+    read -p "Enter your database password (default: shopware): " MYSQL_PASSWORD
+    MYSQL_PASSWORD=${MYSQL_PASSWORD//\"/\\\":-shopware}
 
-    read -p "Enter your database port number (default: 3306): " DB_PORT
-    DB_PORT=${DB_PORT:-"3306"}
+    read -p "Enter your database port number (default: 3306): " MYSQL_PORT
+    MYSQL_PORT=${MYSQL_PORT:-"3306"}
 
     echo -e "\n--------------------------"
     echo -e "Admin settings"
@@ -131,14 +131,14 @@ function createEnvFile(){
     echo -e "SHOPWARE_REVISION=\"${SW_REVISION}\"" >> ${__DIR__}/../.env
 
     echo -e "\n# The URL has priority over the other values, so only one parameter needs to be set in production environments" >> ${__DIR__}/../.env
-    echo -e "DATABASE_URL=\"mysql://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}\"\n" >> ${__DIR__}/../.env
+    echo -e "DATABASE_URL=\"mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}\"\n" >> ${__DIR__}/../.env
 
     echo -e "# If e.g. the password contains special chars not allowed in a URL, you can define each parameter by itself instead" >> ${__DIR__}/../.env
-    echo -e "DB_HOST=\"${DB_HOST}\"" >> ${__DIR__}/../.env
-    echo -e "DB_DATABASE=\"${DB_DATABASE}\"" >> ${__DIR__}/../.env
-    echo -e "DB_USERNAME=\"${DB_USERNAME}\"" >> ${__DIR__}/../.env
-    echo -e "DB_PASSWORD=\"${DB_PASSWORD}\"" >> ${__DIR__}/../.env
-    echo -e "DB_PORT=\"${DB_PORT}\"" >> ${__DIR__}/../.env
+    echo -e "MYSQL_HOST=\"${MYSQL_HOST}\"" >> ${__DIR__}/../.env
+    echo -e "MYSQL_DATABASE=\"${MYSQL_DATABASE}\"" >> ${__DIR__}/../.env
+    echo -e "MYSQL_USER=\"${MYSQL_USER}\"" >> ${__DIR__}/../.env
+    echo -e "MYSQL_PASSWORD=\"${MYSQL_PASSWORD}\"" >> ${__DIR__}/../.env
+    echo -e "MYSQL_PORT=\"${MYSQL_PORT}\"" >> ${__DIR__}/../.env
 
     echo -e "\n# Installation configuration (can be removed after installation)" >> ${__DIR__}/../.env
     echo -e "ADMIN_EMAIL=\"$ADMIN_EMAIL\"" >> ${__DIR__}/../.env

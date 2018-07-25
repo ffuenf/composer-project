@@ -7,11 +7,11 @@ if (getenv('DATABASE_URL')) {
 
 // Fallback if e.g. the password contains URL invalid parameters
 if (!$db) {
-    $db['user'] = getenv('DB_USERNAME');
-    $db['pass'] = getenv('DB_PASSWORD');
-    $db['path'] = '/' . getenv('DB_DATABASE');
-    $db['host'] = getenv('DB_HOST');
-    $db['port'] = getenv('DB_PORT');
+    $db['user'] = getenv('MYSQL_USER');
+    $db['pass'] = getenv('MYSQL_PASSWORD');
+    $db['path'] = '/' . getenv('MYSQL_DATABASE');
+    $db['host'] = getenv('MYSQL_HOST');
+    $db['port'] = getenv('MYSQL_PORT');
     $db['scheme'] = 'mysql';
 }
 
